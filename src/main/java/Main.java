@@ -29,7 +29,7 @@ import static spark.Spark.*;
 
 public class Main {
 
-	public static String ELASTICSEARCH_SERVER_URL = "https://2pxahvjc:1nstazytud2d39hb@apple-4398644.us-east-1.bonsaisearch.net";
+	public static String ELASTICSEARCH_SERVER_URL = "https://98orfada:49indspqk3qw7xwh@cherry-5353030.us-east-1.bonsaisearch.net";//"https://2pxahvjc:1nstazytud2d39hb@apple-4398644.us-east-1.bonsaisearch.net";
 	public static String ELASTICSEARCH_SERVER_URL_LOCAL = "http://localhost:9200";
 	
   public static void main(String[] args) {
@@ -77,9 +77,6 @@ public class Main {
 	  System.out.println( "Main Started" );
       
       InitFirebase();
-
-      
-     
       
       InitRequestListener();
       
@@ -94,7 +91,7 @@ public class Main {
       
       AddSearchMatchsToResponseQueue("TEST_REQUEST", "TESTREQUESTER", searchMatches);
       
-      //AddDataToElasticSearch();
+      AddDataToElasticSearch();
   }
   
   public static void AddRequest(Request request)
