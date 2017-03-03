@@ -29,53 +29,14 @@ import static spark.Spark.*;
 
 public class Main {
 
-	public static String ELASTICSEARCH_SERVER_URL = "https://98orfada:49indspqk3qw7xwh@cherry-5353030.us-east-1.bonsaisearch.net";//"https://2pxahvjc:1nstazytud2d39hb@apple-4398644.us-east-1.bonsaisearch.net";
+	public static String ELASTICSEARCH_SERVER_URL;
 	public static String ELASTICSEARCH_SERVER_URL_LOCAL = "http://localhost:9200";
 	
-  public static void main(String[] args) {
-
-//    port(Integer.valueOf(System.getenv("PORT")));
-//    staticFileLocation("/public");
-//
-//    get("/hello", (req, res) -> "Hello World");
-//
-//    get("/", (request, response) -> {
-//        Map<String, Object> attributes = new HashMap<>();
-//        attributes.put("message", "Hello World!");
-//
-//        return new ModelAndView(attributes, "index.ftl");
-//    }, new FreeMarkerEngine());
-//
-//    HikariConfig config = new  HikariConfig();
-//    config.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
-//    final HikariDataSource dataSource = (config.getJdbcUrl() != null) ?
-//      new HikariDataSource(config) : new HikariDataSource();
-//
-//    get("/db", (req, res) -> {
-//      Map<String, Object> attributes = new HashMap<>();
-//      try(Connection connection = dataSource.getConnection()) {
-//        Statement stmt = connection.createStatement();
-//        stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-//        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-//        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-//
-//        ArrayList<String> output = new ArrayList<String>();
-//        while (rs.next()) {
-//          output.add( "Read from DB: " + rs.getTimestamp("tick"));
-//        }
-//
-//        attributes.put("results", output);
-//        return new ModelAndView(attributes, "db.ftl");
-//      } catch (Exception e) {
-//        attributes.put("message", "There was an error: " + e);
-//        return new ModelAndView(attributes, "error.ftl");
-//      }
-//    }, new FreeMarkerEngine());
-
-	  System.out.println("Hello");
-	  
+  public static void main(String[] args) 
+  {	  
 	  System.out.println( "Main Started" );
       
+	  InitEnvVars();
       InitFirebase();
       
       InitRequestListener();
@@ -87,19 +48,34 @@ public class Main {
       request.node = "NOT SUPPORTED";
       request.requesterId = "Server";
       request.requestId = "SERVER_REQUEST";
-      AddRequest(request);
+      //AddRequest(request);
       
-      AddSearchMatchsToResponseQueue("TEST_REQUEST", "TESTREQUESTER", searchMatches);
+      //AddSearchMatchsToResponseQueue("TEST_REQUEST", "TESTREQUESTER", searchMatches);
       
-      AddDataToElasticSearch();
+      //AddDataToElasticSearch();
   }
   
-  public static void AddRequest(Request request)
+  public static void InitEnvVars()
   {
-  	FirebaseDatabase defaultDatabase = FirebaseDatabase.getInstance();
-      DatabaseReference databaseReference = defaultDatabase.getReference("elasticSearchRequests/" + request.requestId);
-      databaseReference.setValue(request);
+	  Map<String, String> env = System.getenv();
+	  
+	  System.out.println(System.getProperties().toString());
+	  
+      for (String envName : env.keySet()) {
+          System.out.format("%s=%s%n",
+                            envName,
+                            env.get(envName));
+      }
+      
+      ELASTICSEARCH_SERVER_URL = env.get("BONSAI_URL");
   }
+  
+//  public static void AddRequest(Request request)
+//  {
+//  	FirebaseDatabase defaultDatabase = FirebaseDatabase.getInstance();
+//      DatabaseReference databaseReference = defaultDatabase.getReference("elasticSearchRequests/" + request.requestId);
+//      databaseReference.setValue(request);
+//  }
   
   public static void InitRequestListener()
   {
