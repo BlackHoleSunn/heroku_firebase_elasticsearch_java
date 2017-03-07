@@ -43,6 +43,9 @@ public class Main {
       
       ArrayList<String> searchMatches = ElasticSearchHelpers.ElasticSearch(ELASTICSEARCH_SERVER_URL, "A");
       
+      System.out.println("count#user.clicks=1");
+      System.out.println("count#user.clicks=1");
+      System.out.println("count#user.clicks=3");
 //      Request request = new Request();
 //      request.bodyQuery = "A";
 //      request.node = "NOT SUPPORTED";
