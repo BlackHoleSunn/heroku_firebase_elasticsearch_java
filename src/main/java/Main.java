@@ -43,11 +43,11 @@ public class Main {
       
       ArrayList<String> searchMatches = ElasticSearchHelpers.ElasticSearch(ELASTICSEARCH_SERVER_URL, "A");
       
-      Request request = new Request();
-      request.bodyQuery = "A";
-      request.node = "NOT SUPPORTED";
-      request.requesterId = "Server";
-      request.requestId = "SERVER_REQUEST";
+//      Request request = new Request();
+//      request.bodyQuery = "A";
+//      request.node = "NOT SUPPORTED";
+//      request.requesterId = "Server";
+//      request.requestId = "SERVER_REQUEST";
       //AddRequest(request);
       
       //AddSearchMatchsToResponseQueue("TEST_REQUEST", "TESTREQUESTER", searchMatches);
