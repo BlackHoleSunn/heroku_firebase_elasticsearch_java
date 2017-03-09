@@ -34,7 +34,7 @@ public class Main {
 	
   public static void main(String[] args) 
   {	  
-	  System.out.println( "Main Started" );
+	  System.out.println( "Main Started started staretopa" );
       
 	  InitEnvVars();
       InitFirebase();
