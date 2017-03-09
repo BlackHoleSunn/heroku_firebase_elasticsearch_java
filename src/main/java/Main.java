@@ -154,7 +154,7 @@ public class Main {
           	
           	
 
-              //FirebaseApp.initializeApp(options);
+              FirebaseApp.initializeApp(options);
               System.out.println( "InitFirebase3");
               
               
