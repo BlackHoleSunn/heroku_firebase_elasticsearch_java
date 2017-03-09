@@ -45,7 +45,7 @@ public class Main {
       
       System.out.println("count#user.clicks=1");
       System.out.println("count#user.clicks=1");
-      System.out.println("count#user.clicks=3");
+      System.out.println("count#user.clicks=33");
 //      Request request = new Request();
 //      request.bodyQuery = "A";
 //      request.node = "NOT SUPPORTED";
