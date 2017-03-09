@@ -145,8 +145,8 @@ public class Main {
           if(!FirebaseInited) 
           {
           	System.out.println( "InitFirebase2");
-              
-              FileInputStream serviceAccount = new FileInputStream("BigSlickChat-8f3b5b2c8560.json");
+
+              FileInputStream serviceAccount = new FileInputStream("google-services.json");
               FirebaseOptions options = new FirebaseOptions.Builder()
                       .setCredential(FirebaseCredentials.fromCertificate(serviceAccount))
                       .setDatabaseUrl("https://bigslickchat.firebaseio.com/")
